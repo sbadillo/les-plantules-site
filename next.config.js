@@ -1,15 +1,7 @@
-/** @type {import('next').NextConfig} */
-const nextConfig = {
-    webpack: (cfg) => {
-        cfg.module.rules.push(
-            {
-                test: /\.md$/,
-                loader: 'frontmatter-markdown-loader',
-                options: { mode: ['react-component'] }
-            }
-        )
-        return cfg
-    }
-}
+// next.config.js
+const { withContentlayer } = require('next-contentlayer')
 
-module.exports = nextConfig
+/** @type {import('next').NextConfig} */
+const nextConfig = { reactStrictMode: true, swcMinify: true }
+
+module.exports = withContentlayer(nextConfig)
