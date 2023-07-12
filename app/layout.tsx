@@ -18,8 +18,10 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      // eslint-disable-next-line @next/next/no-before-interactive-script-outside-document
-      <Script src="https://identity.netlify.com/v1/netlify-identity-widget.js" strategy="beforeInteractive"></Script>
+      <Script 
+        src="https://identity.netlify.com/v1/netlify-identity-widget.js" 
+        strategy="beforeInteractive"
+      />
       <body className={inter.className}>{children}</body>
     </html>
   )
