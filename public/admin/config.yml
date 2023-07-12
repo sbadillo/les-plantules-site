@@ -3,8 +3,8 @@ backend:
   branch: master # Branch to update (optional; defaults to master)
   
 publish_mode: editorial_workflow
-media_folder: "public/images/uploads" # Media files will be stored
-public_folder: "/images/uploads"
+media_folder: "public/img" # Media files will be stored
+public_folder: "/img"
 
 collections:
   - name: "posts" # Used in routes, e.g., /admin/collections/blog
