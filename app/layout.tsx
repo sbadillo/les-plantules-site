@@ -24,6 +24,8 @@ export default function RootLayout({
         />
       <body className={inter.className}>
         {children}
+        <Script src="/script/decap-to-admin.js"></Script>
+
       </body>
     </html>
   );
