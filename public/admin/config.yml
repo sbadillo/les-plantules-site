@@ -1,8 +1,10 @@
 backend:
+  # change name to "test-repo for testing interface locally"
   name: git-gateway
+  # name: test-repo
   branch: master # Branch to update (optional; defaults to master)
   
-publish_mode: editorial_workflow
+# publish_mode: editorial_workflow
 media_folder: "public/img" # Media files will be stored
 public_folder: "/img"
 
