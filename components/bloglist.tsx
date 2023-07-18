@@ -1,10 +1,10 @@
 import Link from "next/link";
-import { allPosts } from "contentlayer/generated";
+import { allPosts, Post } from "contentlayer/generated";
 import { compareDesc, compareAsc, format, parseISO } from "date-fns";
 import Image from "next/image";
 import Balancer from "react-wrap-balancer";
 
-function HorizontalCard(post) {
+function HorizontalCard(post:Post) {
   /** returns a wider card, with an image
    * see all nice possibilities here
    * https://flowbite.com/docs/components/card/
@@ -14,10 +14,10 @@ function HorizontalCard(post) {
       href={post.url}
       className="flex flex-col items-center bg-white border border-gray-200 rounded-lg shadow md:flex-row md:max-w-xl hover:bg-gray-100 dark:border-gray-700 dark:bg-gray-800 dark:hover:bg-gray-700"
     >
-      {post.image && (
+      {post.thumbnail && (
         <Image
           className="object-cover w-full rounded-t-lg h-96 md:h-auto md:w-48 md:rounded-none md:rounded-l-lg"
-          src={post.image}
+          src={post.thumbnail}
           height="500"
           width="500"
           alt=""
@@ -35,7 +35,7 @@ function HorizontalCard(post) {
   );
 }
 
-function CardWithImage(post) {
+function CardWithImage(post:Post) {
   return (
     <div className="max-w-sm bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
       <Link href={post.url}>
@@ -60,11 +60,11 @@ function CardWithImage(post) {
         </p>
         <Link
           href={post.url}
-          class="inline-flex items-center px-3 py-2 text-sm font-medium text-center text-white bg-blue-700 rounded-lg hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
+          className="inline-flex items-center px-3 py-2 text-sm font-medium text-center text-white bg-blue-700 rounded-lg hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
         >
           Read more
           <svg
-            class="w-3.5 h-3.5 ml-2"
+            className="w-3.5 h-3.5 ml-2"
             aria-hidden="true"
             xmlns="http://www.w3.org/2000/svg"
             fill="none"
