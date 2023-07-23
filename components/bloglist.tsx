@@ -3,39 +3,9 @@ import { allPosts, Post } from "contentlayer/generated";
 import { compareDesc, compareAsc, format, parseISO } from "date-fns";
 import Image from "next/image";
 import Balancer from "react-wrap-balancer";
+import { Card } from "flowbite-react";
 
-function HorizontalCard(post:Post) {
-  /** returns a wider card, with an image
-   * see all nice possibilities here
-   * https://flowbite.com/docs/components/card/
-   */
-  return (
-    <Link
-      href={post.url}
-      className="flex flex-col items-center bg-white border border-gray-200 rounded-lg shadow md:flex-row md:max-w-xl hover:bg-gray-100 dark:border-gray-700 dark:bg-gray-800 dark:hover:bg-gray-700"
-    >
-      {post.thumbnail && (
-        <Image
-          className="object-cover w-full rounded-t-lg h-96 md:h-auto md:w-48 md:rounded-none md:rounded-l-lg"
-          src={post.thumbnail}
-          height="500"
-          width="500"
-          alt=""
-        />
-      )}
-      <div className="flex flex-col justify-between p-4 leading-normal">
-        <h2 className="mb-2 text-xl font-sans font-bold  text-gray-900 dark:text-white">
-          <Balancer>{post.title}</Balancer>
-        </h2>
-        <p className="mb-3 font-normal text-gray-700 dark:text-gray-400">
-          {post.summary}
-        </p>
-      </div>
-    </Link>
-  );
-}
-
-function CardWithImage(post:Post) {
+function CardWithImage(post: Post) {
   return (
     <div className="max-w-sm bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
       <Link href={post.url}>
@@ -49,38 +19,39 @@ function CardWithImage(post:Post) {
           />
         )}
       </Link>
-      <div className="p-5">
+      <div className="p-5 hover:bg-gray-100">
         <Link href={post.url}>
-          <h5 className="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">
+          <h5 className="mb-2 text-2xl font-bold tracking-tight text-gray-900">
             <Balancer>{post.title}</Balancer>
           </h5>
-        </Link>
-        <p className="mb-3 font-normal text-gray-700 dark:text-gray-400">
-          {post.summary}
-        </p>
-        <Link
-          href={post.url}
-          className="inline-flex items-center px-3 py-2 text-sm font-medium text-center text-white bg-blue-700 rounded-lg hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
-        >
-          Read more
-          <svg
-            className="w-3.5 h-3.5 ml-2"
-            aria-hidden="true"
-            xmlns="http://www.w3.org/2000/svg"
-            fill="none"
-            viewBox="0 0 14 10"
-          >
-            <path
-              stroke="currentColor"
-              stroke-linecap="round"
-              stroke-linejoin="round"
-              stroke-width="2"
-              d="M1 5h12m0 0L9 1m4 4L9 9"
-            />
-          </svg>
+          <p className="mb-3 font-normal text-gray-700">{post.summary}</p>
+        <div className="font-normal text-gray-400">
+            Lire plus ..
+        </div>
         </Link>
       </div>
     </div>
+  );
+}
+
+// from https://www.flowbite-react.com/docs/components/card
+function CardWithDecorativeImage(post: Post) {
+  return (
+    // <Link href={post.url}>
+    <Card
+      className="max-w-sm"
+      imgAlt="Meaningful alt text for an image that is not purely decorative"
+      imgSrc={post.thumbnail}
+      href={post.url}
+    >
+      <h5 className="text-2xl font-bold tracking-tight text-gray-900 dark:text-white">
+        <Balancer>{post.title}</Balancer>
+      </h5>
+      <p className="font-normal text-gray-700 dark:text-gray-400">
+        <Balancer>{post.summary}</Balancer>
+      </p>
+    </Card>
+    // </Link>
   );
 }
 
@@ -90,10 +61,10 @@ export default function BlogList() {
   );
 
   return (
-    <div className="max-w-xl">
-      {/* <h1 className="mb-8 text-3xl font-bold">Posts</h1> */}
+    // <div className="max-w-xl flex">
+    <div className="space-y-8 lg:grid lg:grid-cols-3 sm:gap-6 xl:gap-10 lg:space-y-0">
       {posts.map((post, idx) => (
-        <div key={idx} className="my-4">
+        <div key={idx} className="flex flex-col max-w-lg mx-auto">
           <CardWithImage {...post} />
         </div>
       ))}

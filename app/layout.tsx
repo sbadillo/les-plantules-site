@@ -18,14 +18,13 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-        <Script 
-        src="https://identity.netlify.com/v1/netlify-identity-widget.js" 
+      <Script
+        src="https://identity.netlify.com/v1/netlify-identity-widget.js"
         // strategy="beforeInteractive"
-        />
-      <body className={inter.className}>
+      />
+      <body className="{inter.className}">
         {children}
         <Script src="/script/decap-to-admin.js"></Script>
-
       </body>
     </html>
   );
